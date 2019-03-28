@@ -3,6 +3,7 @@
 ##	What is it about ?
 
 This chat-bot can respond to several questions :
+
 About the population and the currency of the different country of the world.
 And about different movies that the user might like.
 
@@ -23,11 +24,13 @@ For the population you can ask :
 Both of them is working
 
 For the currency you can ask :
+
 -What is the currency in FRANCE
 -currency in spain
 Both of them is working
 
 For movies, you have to ask :
+
 -(give|propose) me X movie
 So “give me 10 movies” or “propose me 2 movies” are both working
 After, there is two option :

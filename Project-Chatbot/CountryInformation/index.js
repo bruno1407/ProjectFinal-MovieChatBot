@@ -6,7 +6,7 @@ const uri = "mongodb+srv://bruno:azertyuiop@cluster0-8nvxw.mongodb.net/ListOfMov
 const client = new MongoClient(uri, { useNewUrlParser: true });
 var collection;
 
-const getWeather = (location) => {
+const getInforamtion = (location) => {
 	return new Promise(async (resolve, reject) => {
 		try{			
 			const weatherConditions = await unirest.get("https://ajayakv-rest-countries-v1.p.rapidapi.com/rest/v1/all")
@@ -14,13 +14,22 @@ const getWeather = (location) => {
             .end(function (result) {
 				client.connect(err => {    
 					collection = client.db("CountryDetails").collection("Details");
+					try{ 
 					collection.findOne({"name": location},(error, result) => {
 						if(error) {
 							return response.status(500).send(error);
 						}
-					
-						resolve(result);
+						if(result==null){
+							resolve("Unknow")
+						}
+						else{
+							resolve(result);
+						}
+						
 					});;
+					}catch(e){
+						console.log(e);
+					}
 					
 				});
 				
@@ -34,4 +43,4 @@ const getWeather = (location) => {
 
 }
 
-module.exports =getWeather;
+module.exports =getInforamtion;
